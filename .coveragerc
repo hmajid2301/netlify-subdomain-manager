@@ -1,0 +1,15 @@
+[run]
+branch = True
+source =
+    netlify_subdomains_manager
+
+
+[paths]
+source =
+   src/netlify_subdomains_manager
+   .tox/*/lib/python*/site-packages/netlify_subdomains_manager
+
+
+[report]
+show_missing = True
+precision = 2
