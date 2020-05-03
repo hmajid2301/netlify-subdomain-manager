@@ -57,7 +57,7 @@ or you can build it locally
 
 ```
 npm run build
-docker build -t dockerhub-descriptions-updater .
+docker build -t netlify-subdomain-manager .
 docker run -v test.json:/app/subdomain.json --env-file .env netlify-subdomain-manager
 ```
 
@@ -114,7 +114,7 @@ edit-domains:netlify:
 
 You can run the script locally like so.
 
-```
+```bash
 npm install
 touch .env
 source .env
