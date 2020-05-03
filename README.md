@@ -50,7 +50,7 @@ You can run the Docker container locally like so.
 
 ```bash
 touch .env
-docker run -rm -v test.json:/app/test.json --env-file .env hmajid2301/netlify-subdomain-manager
+docker run -rm -v ${PWD}/subdomains.json:/app/subdomains.json --env-file .env hmajid2301/netlify-subdomain-manager
 ```
 
 or you can build it locally
@@ -58,7 +58,7 @@ or you can build it locally
 ```
 npm run build
 docker build -t netlify-subdomain-manager .
-docker run -v test.json:/app/subdomain.json --env-file .env netlify-subdomain-manager
+docker run -v ${PWD}/subdomains.json:/app/subdomain.json --env-file .env netlify-subdomain-manager
 ```
 
 Where `.env` is like:

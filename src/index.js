@@ -10,7 +10,7 @@ async function main(args) {
   const subdomain = JSON.parse(subdomainData);
   const subdomains = [];
 
-  subdomain.forEach(alias => {
+  subdomain.forEach((alias) => {
     const normalizedAlias = alias
       .split(" ")
       .join("-")
@@ -21,15 +21,15 @@ async function main(args) {
   client
     .updateSite({
       site_id: args.siteId,
-      body: { domain_aliases: subdomains }
+      body: { domain_aliases: subdomains },
     })
-    .then(response => {
+    .then((response) => {
       process.stdout.write(
         `successfully updated domain aliases on Netlify, for ${response.name}.`
       );
     })
-    .catch(error => {
-      process.stdout.write(error);
+    .catch((error) => {
+      process.stderr.write(error);
       process.exit(1);
     });
 }
@@ -40,28 +40,32 @@ const args = yargs
   .option("a", {
     alias: "accessToken",
     description: "The Netlify access token to use the Netlify API.",
-    demandOption: true
+    demandOption: true,
   })
   .option("f", {
     alias: "subdomainFile",
     description:
       "Path to JSON file, which contains the subdomain the netlify site should have.",
     demandOption: true,
-    default: "./subdomain.json"
+    default: "./subdomain.json",
   })
   .option("m", {
     alias: "mainDomain",
     description: "The main domain you want to create subdomain within.",
-    demandOption: true
+    demandOption: true,
   })
   .option("s", {
     alias: "siteId",
     description: "The site Id to add the subdomain to on Netlify.",
-    demandOption: true
+    demandOption: true,
   })
   .help("h")
   .alias("h", "help").argv;
 
 main(args)
-  .then(() => {})
-  .catch(() => {});
+  .then(() => {
+    process.stdout.write("Finished.");
+  })
+  .catch((error) => {
+    process.stdout.write(error);
+  });
