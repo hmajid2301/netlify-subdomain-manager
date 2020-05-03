@@ -1,6 +1,6 @@
 {
     "name": "netlify-subdomain-manager",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A CLI tool used to dynamically manage your subdomain on Netlify.",
     "author": "Haseeb Majid",
     "license": "MIT",
