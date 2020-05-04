@@ -24,12 +24,12 @@ async function main(args) {
       body: { domain_aliases: subdomains }
     })
     .then(response => {
-      process.stdout.write(
+      console.log(
         `successfully updated domain aliases on Netlify, for ${response.name}.`
       );
     })
     .catch(error => {
-      process.stderr.write(error);
+      console.error(error);
       process.exit(1);
     });
 }
@@ -47,7 +47,7 @@ const args = yargs
     description:
       "Path to JSON file, which contains the subdomain the netlify site should have.",
     demandOption: true,
-    default: "./subdomain.json"
+    default: "./subdomains.json"
   })
   .option("m", {
     alias: "mainDomain",
@@ -63,9 +63,8 @@ const args = yargs
   .alias("h", "help").argv;
 
 main(args)
-  .then(() => {
-    process.stdout.write("Finished.");
-  })
+  .then(() => {})
   .catch(error => {
-    process.stdout.write(error);
+    console.error(error);
+    process.exit(1);
   });

@@ -1,3 +1,5 @@
+![npm](https://img.shields.io/npm/v/netlify-subdomain-manager)
+
 # Netlify Subdomain Manager
 
 This CLI tool can be used to manage your subdomain aliases on Netlify using a JSON file as a

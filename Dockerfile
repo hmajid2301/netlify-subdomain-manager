@@ -1,7 +1,7 @@
 FROM node:14.1.0-alpine3.10
 
 LABEL maintainer="Haseeb Majid<hello@haseebmajid.dev>"
-LABEL VERSION="0.1.1"
+LABEL VERSION="0.1.2"
 
 ENV NETLIFY_ACCESS_TOKEN=""
 ENV NETLIFY_SUBDOMAIN_FILE="./subdomains.json"
