@@ -24,7 +24,13 @@ by the mainDomain. For example if the json file was like this:
 ```
 
 and the main domain was `haseebmajid.dev` then we would create the following aliases
-`abc.haseebmajid.dev` and `xyz.haseebmajid.dev`.
+`abc.haseebmajid.dev` and `xyz.haseebmajid.dev`. It will also create the domain aliases
+that begin with www so the 4 domain aliases created will be
+
+- www.abc.haseebmajid.dev
+- abc.haseebmajid.dev
+- www.xyz.haseebmajid.dev
+- xyz.haseebmajid.dev
 
 
 ### Args
@@ -34,16 +40,17 @@ netlify_subdomain_manager --help
 Usage: src [options]
 
 Options:
-  --version              Show version number                           [boolean]
-  -a, --accessToken      The Netlify access token to use the Netlify API.
+  --version                  Show version number                       [boolean]
+  -a, --accessToken          The Netlify access token to use the Netlify API.
                                                                       [required]
-  -f, --domainAliasFile  Path to JSON file, which contains the subdomain the
-                         netlify site should have.                    [required]
-  -m, --mainDomain       The main domain you want to create subdomain
-                         within.                                      [required]
-  -s, --siteId           The site Id to add the subdomain to on Netlify.
+  -f, --subdomainFile        Path to JSON file, which contains the subdomain the
+                             netlify site should have.
+                                                  [default: "./subdomains.json"]
+  -m, --mainDomain           The main domain you want to create subdomain
+                             within.                                  [required]
+  -s, --siteId               The site Id to add the subdomain to on Netlify.
                                                                       [required]
-  -h, --help             Show help                                     [boolean]
+  -h, --help                 Show help                                 [boolean]
 ```
 
 ### Docker
