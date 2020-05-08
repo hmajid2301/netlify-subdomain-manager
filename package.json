@@ -30,7 +30,7 @@
     },
     "dependencies": {
         "babel-plugin-transform-runtime": "6.23.0",
-        "netlify": "4.1.1",
+        "netlify": "4.1.4",
         "yargs": "15.3.0"
     },
     "devDependencies": {

@@ -10,29 +10,33 @@ async function main(args) {
   const subdomain = JSON.parse(subdomainData);
   const subdomains = [];
 
+  const dns = await client.getDNSForSite({
+    site_id: args.siteId,
+  });
+  const { dns_zone_id: dnsZoneID } = dns[0].records[0];
+  const dnsRecords = await client.getDnsRecords({ zone_id: dnsZoneID });
+
   subdomain.forEach((alias) => {
     const normalizedAlias = alias
       .split(" ")
       .join("-")
       .toLowerCase();
     subdomains.push(`${normalizedAlias}.${args.mainDomain}`);
+    client.createDnsRecord({});
   });
-  console.log(subdomains);
 
-  client
-    .updateSite({
+  try {
+    const response = await client.updateSite({
       site_id: args.siteId,
       body: { domain_aliases: subdomains },
-    })
-    .then((response) => {
-      console.log(
-        `successfully updated domain aliases on Netlify, for ${response.name}.`
-      );
-    })
-    .catch((error) => {
-      console.error(error);
-      process.exit(1);
     });
+    console.log(
+      `successfully updated domain aliases on Netlify, for ${response.name}.`
+    );
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
 }
 
 const args = yargs
@@ -53,7 +57,6 @@ const args = yargs
     alias: "subdomainFile",
     description:
       "Path to JSON file, which contains the subdomain the netlify site should have.",
-    demandOption: true,
     default: "./subdomains.json",
   })
   .option("m", {
