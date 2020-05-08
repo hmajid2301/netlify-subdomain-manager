@@ -123,4 +123,4 @@ temp/
 
 .env
 vscode
-subdomain.json
+subdomains.json
