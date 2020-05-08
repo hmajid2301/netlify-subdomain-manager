@@ -21,8 +21,19 @@ async function main(args) {
       .split(" ")
       .join("-")
       .toLowerCase();
-    subdomains.push(`${normalizedAlias}.${args.mainDomain}`);
-    client.createDnsRecord({});
+    try {
+      const dnsResponse = client.createDnsRecord({
+        type: "CNAME",
+        hostname: normalizedAlias,
+        value: args.mainDomain,
+      });
+      subdomains.push(`${normalizedAlias}.${args.mainDomain}`);
+      delete dnsRecords["n"]
+    } catch (error) {
+      console.error(
+        `Failed to add DNS record for ${normalizedAlias}, ${error}.`
+      );
+    }
   });
 
   try {
