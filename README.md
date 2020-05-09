@@ -34,16 +34,19 @@ netlify_subdomain_manager --help
 Usage: src [options]
 
 Options:
-  --version              Show version number                           [boolean]
-  -a, --accessToken      The Netlify access token to use the Netlify API.
+  --version                  Show version number                       [boolean]
+  -a, --accessToken          The Netlify access token to use the Netlify API.
                                                                       [required]
-  -f, --domainAliasFile  Path to JSON file, which contains the subdomain the
-                         netlify site should have.                    [required]
-  -m, --mainDomain       The main domain you want to create subdomain
-                         within.                                      [required]
-  -s, --siteId           The site Id to add the subdomain to on Netlify.
+  -c, --createDomainEntries  If set to True, will also create domain entries in
+                             Netlify.                                  [boolean]
+  -f, --subdomainFile        Path to JSON file, which contains the subdomain the
+                             netlify site should have.
+                                                  [default: "./subdomains.json"]
+  -m, --mainDomain           The main domain you want to create subdomain
+                             within.                                  [required]
+  -s, --siteId               The site Id to add the subdomain to on Netlify.
                                                                       [required]
-  -h, --help             Show help                                     [boolean]
+  -h, --help                 Show help                                 [boolean]
 ```
 
 ### Docker

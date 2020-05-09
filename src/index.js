@@ -14,13 +14,13 @@ async function main(args) {
     site_id: args.siteId,
   });
   const { dns_zone_id: dnsZoneID } = dns[0].records[0];
-  subdomain.forEach((alias) => {
+  subdomain.forEach(async (alias) => {
     const normalizedAlias = alias
       .split(" ")
       .join("-")
       .toLowerCase();
     try {
-      const dnsResponse = client.createDnsRecord({
+      const dnsResponse = await client.createDnsRecord({
         zone_id: dnsZoneID,
         body: {
           type: "CNAME",
