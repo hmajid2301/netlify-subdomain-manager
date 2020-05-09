@@ -20,15 +20,19 @@ async function main(args) {
       .join("-")
       .toLowerCase();
     try {
-      const dnsResponse = await client.createDnsRecord({
-        zone_id: dnsZoneID,
-        body: {
-          type: "CNAME",
-          hostname: normalizedAlias,
-          value: args.mainDomain,
-        },
-      });
-      console.log(`Created DNS record for ${normalizedAlias}, ${dnsResponse}.`);
+      if (args.createDomainsEntries) {
+        const dnsResponse = await client.createDnsRecord({
+          zone_id: dnsZoneID,
+          body: {
+            type: "CNAME",
+            hostname: normalizedAlias,
+            value: args.mainDomain,
+          },
+        });
+        console.log(
+          `Created DNS record for ${normalizedAlias}, ${dnsResponse}.`
+        );
+      }
       subdomains.push(`${normalizedAlias}.${args.mainDomain}`);
     } catch (error) {
       console.error(
