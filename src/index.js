@@ -14,12 +14,6 @@ async function main(args) {
     site_id: args.siteId,
   });
   const { dns_zone_id: dnsZoneID } = dns[0].records[0];
-  const dnsRecords = await client.getDnsRecords({ zone_id: dnsZoneID });
-  const result = {};
-  for (let i = 0; i < dnsRecords.length; i += 1) {
-    result[dnsRecords[i].hostname] = dnsRecords[i];
-  }
-
   subdomain.forEach((alias) => {
     const normalizedAlias = alias
       .split(" ")
@@ -27,12 +21,15 @@ async function main(args) {
       .toLowerCase();
     try {
       const dnsResponse = client.createDnsRecord({
-        type: "CNAME",
-        hostname: normalizedAlias,
-        value: args.mainDomain,
+        zone_id: dnsZoneID,
+        body: {
+          type: "CNAME",
+          hostname: normalizedAlias,
+          value: args.mainDomain,
+        },
       });
+      console.log(`Created DNS record for ${normalizedAlias}, ${dnsResponse}.`);
       subdomains.push(`${normalizedAlias}.${args.mainDomain}`);
-      delete result[normalizedAlias];
     } catch (error) {
       console.error(
         `Failed to add DNS record for ${normalizedAlias}, ${error}.`
