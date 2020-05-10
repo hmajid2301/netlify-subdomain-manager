@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2020-05-10
+### Changed
+- Updated Neltlify JS client to latest `4.1.5`.
+- Create two domains aliases including a `www.`.
+
 ## [0.1.2] - 2020-05-04
 ### Fixed
 - Not showing errors properly, using `console.errror` now.
