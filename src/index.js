@@ -16,6 +16,7 @@ async function main(args) {
       .join("-")
       .toLowerCase();
     subdomains.push(`${normalizedAlias}.${args.mainDomain}`);
+    subdomains.push(`www.${normalizedAlias}.${args.mainDomain}`);
   });
 
   try {

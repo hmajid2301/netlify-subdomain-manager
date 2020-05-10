@@ -24,7 +24,13 @@ by the mainDomain. For example if the json file was like this:
 ```
 
 and the main domain was `haseebmajid.dev` then we would create the following aliases
-`abc.haseebmajid.dev` and `xyz.haseebmajid.dev`.
+`abc.haseebmajid.dev` and `xyz.haseebmajid.dev`. It will also create the domain aliases
+that begin with www so the 4 domain aliases created will be
+
+- www.abc.haseebmajid.dev
+- abc.haseebmajid.dev
+- www.xyz.haseebmajid.dev
+- xyz.haseebmajid.dev
 
 
 ### Args
