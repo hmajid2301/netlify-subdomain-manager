@@ -10,35 +10,12 @@ async function main(args) {
   const subdomain = JSON.parse(subdomainData);
   const subdomains = [];
 
-  const dns = await client.getDNSForSite({
-    site_id: args.siteId,
-  });
-  const { dns_zone_id: dnsZoneID } = dns[0].records[0];
   subdomain.forEach(async (alias) => {
     const normalizedAlias = alias
       .split(" ")
       .join("-")
       .toLowerCase();
-    try {
-      if (args.createDomainsEntries) {
-        const dnsResponse = await client.createDnsRecord({
-          zone_id: dnsZoneID,
-          body: {
-            type: "CNAME",
-            hostname: normalizedAlias,
-            value: args.mainDomain,
-          },
-        });
-        console.log(
-          `Created DNS record for ${normalizedAlias}, ${dnsResponse}.`
-        );
-      }
-      subdomains.push(`${normalizedAlias}.${args.mainDomain}`);
-    } catch (error) {
-      console.error(
-        `Failed to add DNS record for ${normalizedAlias}, ${error}.`
-      );
-    }
+    subdomains.push(`${normalizedAlias}.${args.mainDomain}`);
   });
 
   try {
@@ -62,12 +39,6 @@ const args = yargs
     alias: "accessToken",
     description: "The Netlify access token to use the Netlify API.",
     demandOption: true,
-  })
-  .option("c", {
-    alias: "createDomainEntries",
-    description: "If set to True, will also create domain entries in Netlify.",
-    boolean: true,
-    defult: false,
   })
   .option("f", {
     alias: "subdomainFile",

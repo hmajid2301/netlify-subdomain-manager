@@ -37,8 +37,6 @@ Options:
   --version                  Show version number                       [boolean]
   -a, --accessToken          The Netlify access token to use the Netlify API.
                                                                       [required]
-  -c, --createDomainEntries  If set to True, will also create domain entries in
-                             Netlify.                                  [boolean]
   -f, --subdomainFile        Path to JSON file, which contains the subdomain the
                              netlify site should have.
                                                   [default: "./subdomains.json"]
