@@ -19,6 +19,8 @@ async function main(args) {
     subdomains.push(`www.${normalizedAlias}.${args.mainDomain}`);
   });
 
+  console.log("Adding the following subdomains", subdomains);
+
   try {
     const response = await client.updateSite({
       site_id: args.siteId,
