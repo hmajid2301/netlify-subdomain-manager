@@ -6,10 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.1.4] - 2020-05-16
+### Fixed
+- The limit for each API request is a 100 items. So don't create two domain aliases for each items, dropping `www.` for each domain alias.
 
 ## [0.1.3] - 2020-05-10
 ### Changed
-- Updated Neltlify JS client to latest `4.1.5`.
+- Updated neltlify js client to latest `4.1.5`.
 - Create two domains aliases including a `www.`.
 
 ## [0.1.2] - 2020-05-04
@@ -26,7 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial Release.
 
-[Unreleased]: https://gitlab.com/hmajid2301/netlify-subdomain-manager/-/compare/release%2F0.1.3...master
+[Unreleased]: https://gitlab.com/hmajid2301/netlify-subdomain-manager/-/compare/release%2F0.1.4...master
+[0.1.4]: https://gitlab.com/hmajid2301/netlify-subdomain-manager/-/compare/release%2F0.1.4
 [0.1.3]: https://gitlab.com/hmajid2301/netlify-subdomain-manager/-/compare/release%2F0.1.3
 [0.1.2]: https://gitlab.com/hmajid2301/netlify-subdomain-manager/-/compare/release%2F0.1.2
 [0.1.1]: https://gitlab.com/hmajid2301/netlify-subdomain-manager/-/tags/release%2F0.1.1

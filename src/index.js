@@ -10,13 +10,12 @@ async function main(args) {
   const subdomain = JSON.parse(subdomainData);
   const subdomains = [];
 
-  subdomain.forEach(async alias => {
+  subdomain.slice(0, 100).forEach(async alias => {
     const normalizedAlias = alias
       .split(" ")
       .join("-")
       .toLowerCase();
     subdomains.push(`${normalizedAlias}.${args.mainDomain}`);
-    subdomains.push(`www.${normalizedAlias}.${args.mainDomain}`);
   });
 
   console.log("Adding the following subdomains", subdomains);

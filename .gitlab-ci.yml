@@ -25,7 +25,7 @@ lint:code-formatter:
     - master
   script:
     - npm install
-    - npm run code-formatter-check
+    - npm run format:check
 
 publish-docker:
   stage: publish

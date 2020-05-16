@@ -1,6 +1,6 @@
 {
     "name": "netlify-subdomain-manager",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "A CLI tool used to dynamically manage your subdomain on Netlify.",
     "author": "Haseeb Majid",
     "license": "MIT",
@@ -24,8 +24,8 @@
     "scripts": {
         "build": "babel --presets es2015 -d lib/ src",
         "start": "babel-node ./src",
-        "code-formatter": "prettier src/**/*.js --write",
-        "code-formatter-check": "prettier --check src/**/*.js",
+        "format": "prettier src/**/*.js --write",
+        "format:check": "prettier --check src/**/*.js",
         "lint": "eslint src/**/*.js"
     },
     "dependencies": {
